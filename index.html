@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeUnleashed - Download</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --border: #1e1e2e;
+            --text: #e4e4e7;
+            --text-muted: #71717a;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --green: #22c55e;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 80px 24px 48px;
+            max-width: 640px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 88px;
+            height: 88px;
+            background: linear-gradient(135deg, var(--accent), #a855f7);
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+            box-shadow: 0 0 60px rgba(99, 102, 241, 0.2);
+        }
+
+        .logo svg {
+            width: 48px;
+            height: 48px;
+            fill: white;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 12px;
+        }
+
+        .tagline {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--accent);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 16px 36px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            box-shadow: 0 4px 24px rgba(99, 102, 241, 0.3);
+        }
+
+        .download-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 32px rgba(99, 102, 241, 0.4);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
+
+        .download-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        .version-info {
+            margin-top: 16px;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .version-info span {
+            color: var(--green);
+            font-weight: 500;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            max-width: 560px;
+            width: 100%;
+            padding: 0 24px;
+            margin-top: 56px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+        }
+
+        .card h3 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text);
+        }
+
+        .install-steps {
+            max-width: 560px;
+            width: 100%;
+            padding: 0 24px;
+            margin-top: 48px;
+        }
+
+        .install-steps h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .step {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .step-text {
+            padding-top: 4px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
+
+        .step-text strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .smartscreen {
+            background: var(--surface);
+            border: 1px solid #422006;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-top: 8px;
+            max-width: 560px;
+            width: 100%;
+        }
+
+        .smartscreen h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fbbf24;
+            margin-bottom: 8px;
+        }
+
+        .smartscreen p {
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 48px 24px 32px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 520px) {
+            .hero { padding: 48px 20px 32px; }
+            h1 { font-size: 1.75rem; }
+            .cards { grid-template-columns: 1fr; }
+            .download-btn { padding: 14px 28px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="logo">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/>
+            </svg>
+        </div>
+        <h1>TradeUnleashed</h1>
+        <p class="tagline">Smart POS solutions for modern retail. Fast, reliable, and built for your business.</p>
+
+        <a class="download-btn" href="https://github.com/Kamran534/POS---Release/releases/latest/download/TradeUnleashed-Setup-1.0.0.exe">
+            <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            Download for Windows
+        </a>
+        <p class="version-info">Version <span>1.0.0</span> &middot; Windows 10+ &middot; 64-bit</p>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <h3>System Requirements</h3>
+            <p>Windows 10 or later<br>64-bit (x64) processor<br>4 GB RAM minimum<br>200 MB disk space</p>
+        </div>
+        <div class="card">
+            <h3>What's Included</h3>
+            <p>Point of Sale terminal<br>Inventory management<br>Offline-first with sync<br>Receipt printing</p>
+        </div>
+    </div>
+
+    <div class="install-steps">
+        <h2>Installation</h2>
+        <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text">Click <strong>Download for Windows</strong> above to get the installer.</div>
+        </div>
+        <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-text">Run <strong>TradeUnleashed-Setup-1.0.0.exe</strong>. Windows SmartScreen may appear &mdash; see the note below.</div>
+        </div>
+        <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text">The app installs automatically and launches. A desktop shortcut is created for you.</div>
+        </div>
+    </div>
+
+    <div class="smartscreen" style="margin-left: 24px; margin-right: 24px;">
+        <h3>Windows SmartScreen Notice</h3>
+        <p>Since the app isn't code-signed yet, Windows may show a SmartScreen warning. To proceed: click <strong>"More info"</strong>, then click <strong>"Run anyway"</strong>. This is normal for new software without a paid code-signing certificate.</p>
+    </div>
+
+    <footer>
+        &copy; 2026 TradeUnleashed
+    </footer>
+</body>
+</html>
