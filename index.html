@@ -381,15 +381,15 @@
         <div class="subtitle">Smart POS Solutions</div>
         <p class="tagline">Fast, reliable point-of-sale software built for modern retail. Works offline, syncs when connected.</p>
 
-        <a class="download-btn" href="https://github.com/Kamran534/POS---Release/releases/latest/download/TradeUnleashed-Setup-1.0.0.exe">
+        <a id="download-btn" class="download-btn" href="https://github.com/Kamran534/POS---Release/releases/latest/download/TradeUnleashed-Setup-1.0.0.exe">
             <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
             Download for Windows
         </a>
         <div class="version-info">
-            <span class="version-badge">v1.0.0</span>
+            <span id="version-badge" class="version-badge">v1.0.0</span>
             <span class="dot">&middot;</span> Windows 10+
             <span class="dot">&middot;</span> 64-bit
-            <span class="dot">&middot;</span> 203 MB
+            <span class="dot">&middot;</span> <span id="file-size">203 MB</span>
         </div>
     </div>
 
@@ -436,7 +436,7 @@
         </div>
         <div class="step">
             <div class="step-num">2</div>
-            <div class="step-text">Run <strong>TradeUnleashed-Setup-1.0.0.exe</strong> — Windows SmartScreen may appear, see note below.</div>
+            <div class="step-text">Run <strong id="installer-name">TradeUnleashed-Setup-1.0.0.exe</strong> — Windows SmartScreen may appear, see note below.</div>
         </div>
         <div class="step">
             <div class="step-num">3</div>
@@ -455,5 +455,34 @@
     </div>
 
     <footer>&copy; 2026 TradeUnleashed</footer>
+
+    <script>
+    (async function() {
+        try {
+            const res = await fetch('https://api.github.com/repos/Kamran534/POS---Release/releases/latest');
+            if (!res.ok) return;
+            const release = await res.json();
+
+            const version = release.tag_name || release.name;
+            const exe = release.assets.find(a => a.name.endsWith('.exe'));
+            if (!exe) return;
+
+            // Update version badge
+            document.getElementById('version-badge').textContent = version;
+
+            // Update download button link
+            document.getElementById('download-btn').href = exe.browser_download_url;
+
+            // Update file size
+            const sizeMB = (exe.size / (1024 * 1024)).toFixed(0);
+            document.getElementById('file-size').textContent = sizeMB + ' MB';
+
+            // Update installer name in installation steps
+            document.getElementById('installer-name').textContent = exe.name;
+        } catch (e) {
+            // Keep hardcoded fallback values on error
+        }
+    })();
+    </script>
 </body>
 </html>
